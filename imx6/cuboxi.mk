@@ -22,6 +22,10 @@ PRODUCT_COPY_FILES += \
 	device/fsl/cuboxi/audio_policy.conf:system/etc/audio_policy.conf \
 	device/fsl/cuboxi/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
+PRODUCT_COPY_FILES +=	\
+	external/linux-firmware-imx/firmware/vpu/vpu_fw_imx6d.bin:system/lib/firmware/vpu/vpu_fw_imx6d.bin 	\
+	external/linux-firmware-imx/firmware/vpu/vpu_fw_imx6q.bin:system/lib/firmware/vpu/vpu_fw_imx6q.bin
+
 # GPU files
 
 DEVICE_PACKAGE_OVERLAYS := device/fsl/cuboxi/overlay
@@ -49,17 +53,16 @@ PRODUCT_COPY_FILES += \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 endif
 
+# 4329 and 4330 firmware files
 PRODUCT_COPY_FILES += \
-	device/fsl/cuboxi/firmware/brcm/brcmfmac-sdio.bin:system/etc/firmware/brcm/brcmfmac-sdio.bin \
-	device/fsl/cuboxi/firmware/brcm/brcmfmac-sdio.txt:system/etc/firmware/brcm/brcmfmac-sdio.txt \
+	device/fsl/cuboxi/firmware/brcm/bcm4329_fw.bin:system/etc/firmware/brcm/brcmfmac4329-sdio.bin \
+	device/fsl/cuboxi/firmware/brcm/bcm4329_nvram.txt:system/etc/firmware/brcm/brcmfmac4329-sdio.txt \
 	device/fsl/cuboxi/firmware/brcm/bcm4329.hcd:system/etc/firmware/brcm/BCM4329B1.hcd \
+	device/fsl/cuboxi/firmware/brcm/bcm4330_fw.bin:system/etc/firmware/brcm/brcmfmac4330-sdio.bin \
+	device/fsl/cuboxi/firmware/brcm/bcm4330_nvram.txt:system/etc/firmware/brcm/brcmfmac4330-sdio.txt \
+	device/fsl/cuboxi/firmware/brcm/bcm4330.hcd:system/etc/firmware/brcm/BCM4330.hcd \
 	device/fsl/cuboxi/rc.wifi:system/bin/wifi/rc.wifi
 
-#PRODUCT_COPY_FILES += \
-#	device/fsl/cuboxi/media_profiles_480p.xml:system/etc/media_profiles.xml
-# Bluetooth support
-PRODUCT_COPY_FILES += \
-        system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 PRODUCT_PACKAGES +=	\
 	bt_vendor.conf	\
 	brcm_patchram_plus	\

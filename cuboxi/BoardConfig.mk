@@ -46,13 +46,11 @@ endif
 
 
 BOARD_MODEM_VENDOR := AMAZON
-
-USE_ATHR_GPS_HARDWARE := false
+#BOARD_HAVE_HARDWARE_GPS := false
 USE_QEMU_GPS_HARDWARE := true
 
 #for accelerator sensor, need to define sensor type here
-BOARD_HAS_SENSOR := false
-SENSOR_MMA8451 := false
+BOARD_HAS_SENSOR := true
 
 # for recovery service
 TARGET_SELECT_KEY := 28
@@ -62,7 +60,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 # uncomment below lins if use NAND
 #TARGET_USERIMAGES_USE_UBIFS = true
-
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 524288000
 
 ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
 UBI_ROOT_INI := device/fsl/cuboxi/ubi/ubinize.ini
@@ -94,10 +92,12 @@ USE_GPU_ALLOCATOR := true
 
 # camera hal v2
 IMX_CAMERA_HAL_V2 := true
+BOARD_HAVE_USB_CAMERA := true
 
 # define frame buffer count
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 
 #TARGET_BOOTLOADER_CONFIG := 6q:mx6q_sabresd_android_config 6dl:mx6dl_sabresd_android_config
-TARGET_KERNEL_DEFCONF := imx6_cubox_i_hb_android_defconfig
+TARGET_KERNEL_DEFCONF := imx_v7_cubox-i_hummingboard_android_defconfig
+TARGET_KERNEL_DTB := imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb

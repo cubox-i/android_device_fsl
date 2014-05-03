@@ -9,6 +9,20 @@
 #echo 0 > /sys/class/rfkill/rfkill0/state
 
 ##### Insert all the kernel module here to enable your wireless adapters
+DEVICE=`cat /sys/class/mmc_host/mmc0/mmc0\:0001/mmc0\:0001\:1/device`
+if [ "x$DEVICE" == "x0x4330" ]; then
+#	brcm_patchram_plus -d --patchram /system/etc/firmware/brcm/bcm4330.hcd --baudrate 3000000 --enable_hci --use_baudrate_for_download /dev/ttymxc3 --no2bytes --enable_lpm --tosleep=50000  &
+#	brcm_patchram_plus -d --patchram /system/etc/firmware/brcm/bcm4330.hcd --baudrate 3000000 --use_baudrate_for_download /dev/ttymxc3 --no2bytes --enable_lpm --tosleep=500
+
+	sleep 3
+fi
+if [ "x$DEVICE" == "x0x4329" ]; then
+#	/system/bin/brcm_patchram_plus -d --patchram /system/etc/firmware/brcm/bcm4329.hcd --baudrate 3000000 --enable_hci --use_baudrate_for_download /dev/ttymxc3 &
+	sleep 3
+fi
+chmod 665 /sys/class/rfkill/rfkill0/state
+chown 1002:1002 /sys/class/rfkill/rfkill0/state
+echo 0 > /sys/class/rfkill/rfkill0/state
 
 #insmod /system/lib/modules/bcmdhd.ko firmware_path=/etc/firmware/brcm/brcmfmac-sdio.bin nvram_path=/etc/firmware/brcm/brcmfmac-sdio.txt
 insmod /system/lib/modules/brcmutil.ko
