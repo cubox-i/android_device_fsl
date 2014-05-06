@@ -27,13 +27,8 @@ TARGET_BOOTLOADER_BOARD_NAME := CUBOX-I
 PRODUCT_MODEL := CuBox-i
 
 
-BOARD_WLAN_VENDOR 			 := MICROSOM
-ifeq ($(BOARD_WLAN_VENDOR),MICROSOM)
 BOARD_WLAN_DEVICE			 := bcmdhd
-#WPA_SUPPLICANT_VERSION                   := VER_0_8_ATHEROS # TODO Check if this the right one or not
-# If the above is required then hardware/broadcom/wlan/bcmdhd/config/Android.mk requires hacking
 WPA_SUPPLICANT_VERSION			 := VER_0_8_X
-#WPA_SUPPLICANT_VERSION			 := VER_0_8_ATHEROS
 WIFI_DRIVER_MODULE_PATH			 := "/system/lib/modules/brcmfmac.ko"
 WIFI_DRIVER_MODULE_NAME			 := "brcmfmac"
 WIFI_DRIVER_MODULE_ARG           	 := ""
@@ -41,8 +36,9 @@ TARGET_KERNEL_MODULES := \
    kernel_imx/drivers/net/wireless/brcm80211/brcmfmac/brcmfmac.ko:system/lib/modules/brcmfmac.ko	\
    kernel_imx/drivers/net/wireless/brcm80211/brcmutil/brcmutil.ko:system/lib/modules/brcmutil.ko
 BOARD_WPA_SUPPLICANT_DRIVER      	 := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             	 := NL80211
-endif
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 
 
 BOARD_MODEM_VENDOR := AMAZON
