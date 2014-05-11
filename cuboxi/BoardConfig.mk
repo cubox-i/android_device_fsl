@@ -94,6 +94,6 @@ BOARD_HAVE_USB_CAMERA := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 
-#TARGET_BOOTLOADER_CONFIG := 6q:mx6q_sabresd_android_config 6dl:mx6dl_sabresd_android_config
+TARGET_BOOTLOADER_CONFIG := mx6_cubox-i_config
 TARGET_KERNEL_DEFCONF := imx_v7_cubox-i_hummingboard_android_defconfig
 TARGET_KERNEL_DTB := imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb
