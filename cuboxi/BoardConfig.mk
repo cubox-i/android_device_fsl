@@ -70,8 +70,7 @@ $(error "TARGET_USERIMAGES_USE_UBIFS and TARGET_USERIMAGES_USE_EXT4 config open 
 endif
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init gpumem=96M video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 video=mxcfb1:off video=mxcfb2:off fbmem=10M vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale
-#BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init video=mxcfb0:dev=ldb,bpp=32 video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale
+BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 video=mxcfb1:off video=mxcfb2:off fbmem=10M vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale
 
 ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
 #UBI boot command line.
@@ -93,7 +92,20 @@ BOARD_HAVE_USB_CAMERA := true
 # define frame buffer count
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
+#define consumer IR HAL support
+#IMX6_CONSUMER_IR_HAL := true
 
 TARGET_BOOTLOADER_CONFIG := mx6_cubox-i_config
-TARGET_KERNEL_DEFCONF := imx_v7_cubox-i_hummingboard_android_defconfig
-TARGET_KERNEL_DTB := imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb
+TARGET_KERNEL_DEFCONF := imx6_cubox-i_hummingboard_android_defconfig
+# For Linux kernel 3.10.x uncomment the following
+#TARGET_KERNEL_DEFCONF := imx_v7_cubox-i_hummingboard_android_defconfig
+#TARGET_KERNEL_DTB := imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb
+BOARD_SEPOLICY_DIRS := \
+       device/fsl/sabresd_6dq/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+       app.te \
+       file_contexts \
+       fs_use \
+       untrusted_app.te \
+       genfs_contexts
