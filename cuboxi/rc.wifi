@@ -26,6 +26,8 @@
 
 #insmod /system/lib/modules/bcmdhd.ko firmware_path=/etc/firmware/brcm/brcmfmac-sdio.bin nvram_path=/etc/firmware/brcm/brcmfmac-sdio.txt
 insmod /system/lib/modules/brcmutil.ko
+insmod /system/lib/modules/brcmfmac.ko
+
 #insmod /system/lib/modules/brcmfmac.ko brcmf_msg_level=1
 # Following enables tracing, error and iscan
 #insmod /system/lib/modules/brcmfmac.ko brcmf_msg_level=8195
