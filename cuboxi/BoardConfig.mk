@@ -32,9 +32,6 @@ WPA_SUPPLICANT_VERSION			 := VER_0_8_X
 WIFI_DRIVER_MODULE_PATH			 := "/system/lib/modules/brcmfmac.ko"
 WIFI_DRIVER_MODULE_NAME			 := "brcmfmac"
 WIFI_DRIVER_MODULE_ARG           	 := ""
-TARGET_KERNEL_MODULES := \
-   kernel_imx/drivers/net/wireless/brcm80211/brcmfmac/brcmfmac.ko:system/lib/modules/brcmfmac.ko	\
-   kernel_imx/drivers/net/wireless/brcm80211/brcmutil/brcmutil.ko:system/lib/modules/brcmutil.ko
 BOARD_WPA_SUPPLICANT_DRIVER      	 := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             	 := NL80211
@@ -96,7 +93,11 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #IMX6_CONSUMER_IR_HAL := true
 
 TARGET_BOOTLOADER_CONFIG := mx6_cubox-i_config
-TARGET_KERNEL_DEFCONF := imx6_cubox-i_hummingboard_android_defconfig
+BOARD_USES_UBOOT := true
+BOARD_KERNEL_IMAGE_NAME := uImage
+TARGET_KERNEL_SOURCE := kernel_imx
+TARGET_KERNEL_CONFIG := imx6_cubox-i_hummingboard_android_defconfig
+
 # For Linux kernel 3.10.x uncomment the following
 #TARGET_KERNEL_DEFCONF := imx_v7_cubox-i_hummingboard_android_defconfig
 #TARGET_KERNEL_DTB := imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb
