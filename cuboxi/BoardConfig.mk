@@ -92,7 +92,13 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #define consumer IR HAL support
 #IMX6_CONSUMER_IR_HAL := true
 
+# bootloader setup
+BOARD_USES_IMX_UBOOTLOADER := true
+TARGET_BOOTLOADER_SOURCE := bootable/bootloader/uboot-imx
 TARGET_BOOTLOADER_CONFIG := mx6_cubox-i_config
+TARGET_BOOTLOADER_BOARD_NAME := CUBOX-I
+
+# kernel setup
 BOARD_USES_UBOOT := true
 BOARD_KERNEL_IMAGE_NAME := uImage
 TARGET_KERNEL_SOURCE := kernel_imx
